@@ -6,13 +6,11 @@
     <meta name="description" content="Start your development with Meyawo landing page.">
     <meta name="author" content="Devcrud">
     <title>Jubril's Portfolio</title>
-    <!-- font icons -->
-    <link rel="stylesheet" href="../static/assets/vendors/themify-icons/css/themify-icons.css">
-    <!-- Bootstrap + Meyawo main styles -->
-	<link rel="stylesheet" href="../static/css/meyawo.css">
-	<link rel="stylesheet" href="../static/assets/vendors/bootstrap/bootstrap.affix.js">
-	<link rel="stylesheet" href="../static/assets/vendors/bootstrap/bootstrap.bundle.js">
-	<link rel="stylesheet" href="../static/assets/vendors/bootstrap/bootstrap.js">
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+	<link rel="stylesheet" href="/css/meyawo.css">
+	<link rel="stylesheet" href="/assets/vendors/bootstrap/bootstrap.affix.js">
+	<link rel="stylesheet" href="/assets/vendors/bootstrap/bootstrap.bundle.js">
+	<link rel="stylesheet" href="/assets/vendors/bootstrap/bootstrap.js">
 
 
     <style>
@@ -12269,9 +12267,12 @@
                 <span class="up">HI!</span>
                 <span class="down">I am Jubril Bucknor</span>
             </h1>
-            <p class="header-subtitle">Java Backend Developer | Software Engineer</p>            
+            <p class="header-subtitle">Software Engineer | Java Backend Developer</p>
 
-            <button class="btn btn-primary">Visit My Works</button>  //Todo: make link and let it go to github
+            <button class="btn btn-primary">
+                <a href="https://github.com/Jubril7?tab=repositories" target="_blank" style="color: white">Visit My Works</a>
+            </button>
+
 
         </div>
     </header><!-- end of page header -->
@@ -12293,7 +12294,7 @@
                         My teamwork proficiency is exceptional, complemented by outstanding technical and communication skills. Beyond the realm of software development, I find delight in analyzing football matches and immersing myself in the study of British Sign Language.
                         Feel free to contact me.                                    
                     </p>
-                    <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
+                    <button class="btn-rounded btn btn-outline-primary mt-4" id="download-btn">Download My Resume</button>
                 </div>              
             </div><!-- end of about wrapper -->
         </div><!-- end of container -->
@@ -12486,52 +12487,25 @@
     </div> <!-- end of page footer -->
 	
 	<!-- core  -->
-    <script src="../static/assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="../static/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="/assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
 
-    <!-- bootstrap 3 affix -->
-	<script src="../static/assets/vendors/bootstrap/bootstrap.affix.js"></script>
+	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
 
-    <!-- Meyawo js -->
-    <script src="../templates/js/meyawo.js"></script>
+    <script src="/js/meyawo.js"></script>
 
-<script>
-    $(document).ready(function() {
-        // navbar
-        $('#nav-toggle').click(function() {
-            $('.custom-navbar .nav').toggleClass('show');
+
+    <script th:inline="javascript">
+        document.getElementById("download-btn").addEventListener("click", function() {
+            var link = document.createElement('a');
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.href = '/JubrilBucknorResume.pdf';
+            link.download = 'JubrilBucknorResume.pdf';
+            link.click();
+            document.body.removeChild(link);
         });
-
-        // affix
-        $('.custom-navbar').affix({
-            offset: {
-                top: 100
-            }
-        });
-
-        // scrollspy
-        $('body').scrollspy({
-            target: '.custom-navbar',
-            offset: 80
-        });
-
-        // smooth scroll
-        $('a[href*="#"]:not([href="#"])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                && location.hostname == this.hostname) {
-                var $target = $(this.hash);
-                $target = $target.length ? $target : $('[name=' + this.hash.slice(1) + ']');
-                if ($target.length) {
-                var targetOffset = $target.offset().top - 80;
-                $('html, body').animate({
-                    scrollTop: targetOffset
-                }, 1000);
-                return false;
-                }
-            }
-        });
-    });
-</script>
+    </script>
 
 </body>
 </html>
